@@ -11,6 +11,7 @@ router.post(
   "/",
   check("name", "Name is required").notEmpty(),
   check("location", "location is required").notEmpty(),
+  check("number", "location is required").notEmpty(),
   check("email", "Please include a valid email").isEmail(),
   check(
     "password",
@@ -22,7 +23,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password, location } = req.body;
+    const { name, email, password, location, number } = req.body;
 
     try {
       let restaurant = await Restaurant.findOne({ email });
@@ -41,6 +42,7 @@ router.post(
         avatar,
         location,
         password,
+        number,
       });
 
       const salt = await bcrypt.genSalt(10);
