@@ -20,7 +20,7 @@
     flex-grow: 3;
   }
 .CompanyName h1{
-    color: #62D7DB
+    color: #52249c
 }
 .NavbarComponent{
     font-size: clamp(0.8rem, -0.875rem + 5.5vw, 1.2rem);

@@ -10,17 +10,8 @@ const Navbar = () => {
                             </h1>
                     </div>
 
-                            <a className={style.NavbarComponent}>Home</a>
-
-                                   
-                            <a className={style.NavbarComponent}>Techs</a>
-   
-                        
-                            <a className={style.NavbarComponent}>Forum</a>
-                        
-    
-
-                        
+                            <a className={style.NavbarComponent}>Home</a>                    
+                            <a className={style.NavbarComponent}>Sign Up</a>                        
                             <a className={style.NavbarComponent}>Log In</a>
                    
                 </div>
