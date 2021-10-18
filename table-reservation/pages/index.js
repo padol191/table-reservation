@@ -8,6 +8,7 @@ import RestList from '../components/RestList'
 import RestLogin from '../components/RestLogin'
 import CustLogin from '../components/CustLogin'
 import MainLogin from '../components/MainLogin'
+import Reservation from '../components/Reservation'
 export default function Home() {
   return (
     <div className={styles.PageLayout}>
@@ -17,6 +18,7 @@ export default function Home() {
       {/* <MainLogin /> */}
       {/* <RestLogin /> */}
       {/* <CustLogin /> */}
+      <Reservation />
       <Footer />
 
     </div>
