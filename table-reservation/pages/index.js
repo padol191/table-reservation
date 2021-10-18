@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className={styles.PageLayout}>
       <Navbar />
-      <RestSignup />
+      {/* <RestSignup /> */}
       <RestList />
       <Footer />
 
