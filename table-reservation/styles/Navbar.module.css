@@ -1,0 +1,68 @@
+
+.navbar {
+    margin: auto;
+    border-bottom: 1px solid #f2f2f2 ;
+  }
+  
+
+  
+.links {
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+.CompanyName{
+    font-weight: 900;
+    font-size: clamp(1rem, -0.875rem + 5.5vw, 1.5rem);
+    padding-right: 10px;
+    flex-grow: 3;
+  }
+.CompanyName h1{
+    color: #62D7DB
+}
+.NavbarComponent{
+    font-size: clamp(0.8rem, -0.875rem + 5.5vw, 1.2rem);
+    font-weight: 500;
+    width: fit-content;
+    flex-grow: 1;
+}
+/* .link-item3{
+    font-weight: 500;
+    font-size: clamp(1rem, -0.875rem + 5.5vw, 1.2rem);
+    width: fit-content;
+    flex-grow: 1;
+}
+.link-item4{
+    font-weight: 500;
+    font-size: clamp(1rem, -0.875rem + 5.5vw, 1.2rem);
+    width: fit-content;
+    flex-grow: 1;
+} */
+
+/* .link-item4{
+    font-size: clamp(1rem, -0.875rem + 5.5vw, 1.2rem);
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    font-weight: 500;
+    border-radius: 5px;
+    background-color: #DEC362;
+    color: #f2f2f2;
+    font-size: 16px;
+    padding: 8px 16px;
+    box-shadow: 0px 1px 2px #9c9a91;
+} */
+
+.NavbarComponent button:hover {
+    /* box-shadow: inset 0px 2px 3px #9c9a91; */
+    color: #000000;
+}
+
+.links a{
+    text-decoration: none;
+}
+
+.links a:hover{
+    color: #000000;
+}
