@@ -1,0 +1,27 @@
+.main{
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.button{
+    font-family: quicksand;
+    font-weight: 500;
+    margin: 20px 20px;
+    width: 200px;
+    height: fit-content;
+    border: none;
+    color: #fff;
+    background-color: #9965ec;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 3px;
+    padding: 8px 12px;
+    box-shadow:  0px 1px 3px #6930c3;
+}
+
+.button:hover{
+    box-shadow: inset  0px 1px 3px #6930c3;
+}
