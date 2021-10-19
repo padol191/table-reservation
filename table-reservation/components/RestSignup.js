@@ -15,21 +15,10 @@ const RestSignup = () => {
   const [city, setCity] = useState("");
   const [number, setNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [cpassword, setcPassword] = useState("");
+  const [address, setAddress] = useState("");
+  const [serves, setServes] = useState("");
+  const [totaltables, setTables] = useState("");
   const [user, setUser] = useState(false);
-
-  useEffect(() => {
-    const value = localStorage.getItem("logininfo");
-    if (value === "1") {
-      setUser(true);
-    }
-  }, []);
-
-  function LoginChangeHandler() {
-    localStorage.setItem("logininfo", 1);
-    setUser(true);
-    router.push("/authenticated");
-  }
 
   const NameChangeHandler = (event) => {
     setName(event.target.value);
@@ -48,7 +37,15 @@ const RestSignup = () => {
   const PasswordChangeHandler = (event) => {
     setPassword(event.target.value);
   };
-
+  const AddressChangeHandler = (event) => {
+    setAddress(event.target.value);
+  };
+  const ServesChangeHandler = (event) => {
+    setServes(event.target.value);
+  };
+  const TableChangeHandler = (event) => {
+    setTables(event.target.value);
+  };
   const CPasswordChangeHandler = (event) => {
     setcPassword(event.target.value);
   };
@@ -57,17 +54,22 @@ const RestSignup = () => {
 
     const data = {
       name: name,
-      location: city,
+      city: city,
+      address: address,
+      serves: serves,
+      tables: { total: totaltables, unreserved: totaltables },
       email: email,
       number: number,
       password: password,
-      cpassword: cpassword,
     };
     try {
-      const req = await axios.post(REGISTER_URL, data);
+      const req = await fetch("http://localhost:5000/api/restaurant/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
       const res = await req.json();
       console.log(res);
-      window.localStorage.setItem("token", res.data.token);
 
       // const req2 = await axios.get(LOG_URL, {
       //   headers: {
@@ -76,18 +78,15 @@ const RestSignup = () => {
       // });
       // const res2 = await req2.json();
       // const data2 = res2.data;
+      // setUser(true);
+      console.log(res.token);
+      window.localStorage.setItem("token", res.token);
+      localStorage.setItem("logininfo", 1);
       setUser(true);
+      await router.push("/auth/restprofile");
     } catch (err) {
       console.log(err);
     }
-
-    setName("");
-    setEmail("");
-    setPassword("");
-    setcPassword("");
-    localStorage.setItem("logininfo", 1);
-    setUser(true);
-    router.push("/authenticated");
   };
 
   return (
@@ -111,6 +110,30 @@ const RestSignup = () => {
       />
       <input
         className={style.formFields}
+        type="text"
+        required
+        placeholder="Address"
+        value={address}
+        onChange={AddressChangeHandler}
+      />
+      <input
+        className={style.formFields}
+        type="text"
+        required
+        placeholder="Serves"
+        value={serves}
+        onChange={ServesChangeHandler}
+      />
+      <input
+        className={style.formFields}
+        type="text"
+        required
+        placeholder="Total Tables"
+        value={totaltables}
+        onChange={TableChangeHandler}
+      />
+      <input
+        className={style.formFields}
         type="email"
         required
         placeholder="Email"
@@ -131,14 +154,6 @@ const RestSignup = () => {
         type="password"
         required
         placeholder="Password"
-        value={password}
-        onChange={PasswordChangeHandler}
-      />
-      <input
-        className={style.formFields}
-        type="password"
-        required
-        placeholder="Confirm Password"
         value={password}
         onChange={PasswordChangeHandler}
       />

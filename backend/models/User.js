@@ -37,6 +37,9 @@ const UserSchema = new Schema({
       count: {
         type: Number,
       },
+      completed: {
+        type: Boolean,
+      },
     },
   ],
 });
