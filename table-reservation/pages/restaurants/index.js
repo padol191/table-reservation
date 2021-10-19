@@ -25,7 +25,7 @@ const RestList = ({ data }) => {
 
               <p className={style.location}>
                 <ImLocation className={style.symbol} />
-                {value.location}
+                {value.city}
               </p>
             </div>
           </Link>

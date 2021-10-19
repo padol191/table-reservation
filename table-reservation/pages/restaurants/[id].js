@@ -68,14 +68,14 @@ const Reservation = ({ data }) => {
         <IoMdArrowRoundBack />
       </button>
       <h2>{data.name}</h2>
-      <p className={style.restDetails}>Serves: Chinese, Italian, Punjabi</p>
+      <p className={style.restDetails}>Serves: {data.serves}</p>
       <p className={style.restDetails}>Timings: 18:00 - 23:00</p>
-      <p className={style.restDetails}>Address: {data.location}</p>
+      <p className={style.restDetails}>Address: {data.address}</p>
       <button className={style.icon}>
         <BiPhoneCall />
       </button>
       <h3>Book a Table</h3>
-      <p className={style.formDetails}>Vacanies: 5</p>
+      <p className={style.formDetails}>Vacanies: {data.tables.unreserved}</p>
       <p className={style.formDetails}>Approx. Waiting Time: 35mins</p>
       <form className={style.form} action="">
         <label className={style.formLabel}>Select The Number Of Diners</label>

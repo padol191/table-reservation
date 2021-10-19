@@ -11,7 +11,7 @@ const bcrypt = require("bcryptjs");
 router.post(
   "/",
   check("name", "Name is required").notEmpty(),
-  check("location", "location is required").notEmpty(),
+  check("city", "location is required").notEmpty(),
   check("number", "location is required").notEmpty(),
   check("email", "Please include a valid email").isEmail(),
   check(
@@ -24,7 +24,8 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password, location, number } = req.body;
+    const { name, email, password, city, number, address, tables, serves } =
+      req.body;
 
     try {
       let restaurant = await Restaurant.findOne({ email });
@@ -41,7 +42,10 @@ router.post(
         name,
         email,
         avatar,
-        location,
+        city,
+        address,
+        serves,
+        tables,
         password,
         number,
       });
