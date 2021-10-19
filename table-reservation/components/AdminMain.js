@@ -1,5 +1,9 @@
 import style from "../styles/AdminMain.module.css";
+<<<<<<< HEAD
 import Link from "next/link";
+=======
+import {AiOutlineCheck} from 'react-icons/ai'
+>>>>>>> 3949743dbd9f4eea1e997855413571cdc93defdc
 export const getStaticProps = async () => {
   const res = await fetch("http://localhost:5000/api/restaurant/all");
   const data = await res.json();
