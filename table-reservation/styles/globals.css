@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Quicksand , Helvetica Neue, sans-serif;
+  font-family: Quicksand, Helvetica Neue, sans-serif;
   color: #666;
 }
 
@@ -15,4 +15,12 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.not-found {
+  text-align: center;
+}
+.not-found a {
+  color: #4979ff;
+  text-decoration: underline;
 }
