@@ -7,11 +7,13 @@ import RestSignup from "../components/RestSignup";
 import RestList from "../components/RestList";
 import CustMain from "../components/CustMain";
 import AdminMain from "../components/AdminMain";
+import Reservation from "../components/Reservation"
 
 export default function Home() {
   return (
     <div className={styles.PageLayout}>
       <Navbar />
+      <AdminMain />
       <Footer />
     </div>
   );
