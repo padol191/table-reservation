@@ -9,6 +9,8 @@ import RestLogin from '../components/RestLogin'
 import CustLogin from '../components/CustLogin'
 import MainLogin from '../components/MainLogin'
 import Reservation from '../components/Reservation'
+import AdminMain from '../components/AdminMain'
+
 export default function Home() {
   return (
     <div className={styles.PageLayout}>
@@ -18,7 +20,8 @@ export default function Home() {
       {/* <MainLogin /> */}
       {/* <RestLogin /> */}
       {/* <CustLogin /> */}
-      <Reservation />
+      {/* <Reservation /> */}
+      {/* <AdminMain /> */}
       <Footer />
 
     </div>
