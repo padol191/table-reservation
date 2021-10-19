@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import RestSignup from "../components/RestSignup";
-import RestList from "../components/RestList";
-export default function Home() {
-  return (
-    <div className={styles.PageLayout}>
-      <h1>HELLO</h1>
-=======
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -34,7 +21,6 @@ export default function Home() {
       <Reservation />
       <Footer />
 
->>>>>>> f1c0302a9f560f0ad67f6ead6651bd6bd29261db
     </div>
   );
 }

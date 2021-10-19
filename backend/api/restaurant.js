@@ -7,6 +7,7 @@ const config = require("config");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
+//Create/SignUp New restaurant
 router.post(
   "/",
   check("name", "Name is required").notEmpty(),
@@ -72,4 +73,14 @@ router.post(
   }
 );
 
+//list all restaurants
+router.get("/all", async (req, res) => {
+  try {
+    const restaurant = await Restaurant.find();
+    res.json({ restaurant });
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send("server error");
+  }
+});
 module.exports = router;
