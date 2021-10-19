@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap');
+
+/* {
+  margin:0;
+  font-family: "Quicksand";
+  color: #666;
+}
+*/
+
+.signupform{
+    display: flexbox;
+    max-width: 70%;
+    margin: 40px auto;
+    border: #666;
+    align-items: center;
+  }
+  
+  .signupcontainer{
+    background-color: #9965ec;
+    padding: 20px;
+    padding-top: 5px;
+    width: 40vmax;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-radius: 3px;
+    box-shadow:  0px 0px 8px;
+  }
+  .signupform input{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    font-size: 10px;
+    font-weight: 300;
+    color: #6930c3;
+    background-color: #ac7afd;
+    border-color: #6930c3;
+    border-width: 0px;
+    border-radius: 3px;
+  }
+  
+  .signupform button{
+    border: none;
+    color: #6930c3;
+    font-size: 10px;
+    text-align: center;
+    border-radius: 3px;
+    padding: 6px 8px;
+    box-shadow:  0px 1px 2px #52249c;
+  }
+  
+  .signupform button:hover{
+    box-shadow: inset  0px 1px 2px #52249c;
+  }
+
+  .memberlink{
+    padding-top: 10px;
+  }
+  .memberlink a{
+    padding-left: 1px;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #666;
+  }
+
+  .memberlink a:hover{
+    font-weight: 500;
+  }
