@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import RestSignup from "../components/RestSignup";
 import RestList from "../components/RestList";
 import CustMain from "../components/CustMain";
+import AdminMain from "../components/AdminMain";
 
 export default function Home() {
   return (

@@ -12,6 +12,11 @@
 .main h2{
     font-weight: 500;
 }
+
+.main img{
+    padding-top: 40px;
+    width: 100%;
+}
 .restDetails{
     font-size: 13px;
 }

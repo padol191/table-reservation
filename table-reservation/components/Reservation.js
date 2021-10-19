@@ -32,6 +32,7 @@ const Reservation = () => {
     return ( 
         <div className={style.main}>
             <button className={style.backbutton}action=''><IoMdArrowRoundBack/></button>
+            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.beefmagazine.com%2Fsites%2Fbeefmagazine.com%2Ffiles%2Fpizza-dominos-amanda-column_0.jpg&f=1&nofb=1" alt="" />
             <h2>Restaurant Name</h2>
             <p className={style.restDetails}>Serves: Chinese, Italian, Punjabi</p>
             <p className={style.restDetails}>Timings: 18:00 - 23:00</p>
