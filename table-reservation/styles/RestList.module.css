@@ -1,0 +1,45 @@
+.ListMain{
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    flex-wrap: wrap;
+}
+.card{
+    border-radius: 3px;
+    width: fit-content;
+    padding: 10px 20px;
+    margin: 10px;
+    box-shadow: 0px 1px 3px;
+}
+
+.card:hover{
+    box-shadow: inset 0px 1px 3px;
+}
+
+.card img{
+    width: 160px;
+    margin: auto;
+}
+
+.name{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.location{
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.symbol{
+    font-size: 10px;
+}
+
+.mainDiv h2{
+    text-align: center;
+    font-weight: 400;
+    font-size: 30px;
+    margin-bottom: 0px;
+}

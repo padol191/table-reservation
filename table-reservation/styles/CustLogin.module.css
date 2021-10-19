@@ -1,5 +1,5 @@
 .formMain{
-    background-color: #9965ec;
+    background-color: #f2f2f2;
     padding: 30px 40px;
     padding-top: 5px;
     width: 40vmax;
@@ -11,7 +11,7 @@
 }
 
 .formHeading{
-    color: #fff;
+    color: #9965ec;
     border: 0px;
 }
 .formFields{
@@ -38,7 +38,8 @@
 
 .button{
     border: none;
-    color: #9965ec;
+    color: #fff;
+    background-color: #9965ec;
     font-size: 14px;
     text-align: center;
     border-radius: 3px;

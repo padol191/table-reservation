@@ -18,10 +18,16 @@ const RestaurantSchema = new Schema({
   number: {
     type: Number,
   },
+  serves: {
+    type: String,
+  },
   avatar: {
     type: String,
   },
-  location: {
+  address: {
+    type: String,
+  },
+  city: {
     type: String,
   },
   tables: {
@@ -36,7 +42,7 @@ const RestaurantSchema = new Schema({
       type: Number,
     },
 
-    usreserved: {
+    unreserved: {
       type: Number,
     },
   },
