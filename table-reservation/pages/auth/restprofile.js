@@ -7,7 +7,6 @@ export default function Profile() {
   const [auth, setAuth] = useState(false);
   //   const token = window.localStorage.setItem("token", res.data.token);
   useEffect(() => {
-    let isMounted = true;
     (async () => {
       try {
         const token = window.localStorage.getItem("token");

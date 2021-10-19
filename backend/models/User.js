@@ -34,6 +34,9 @@ const UserSchema = new Schema({
       timeslot: {
         type: String,
       },
+      name: {
+        type: String,
+      },
       count: {
         type: Number,
       },

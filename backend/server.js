@@ -17,6 +17,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", require("./api/users"));
 app.use("/api/restaurant", require("./api/restaurant"));
 app.use("/api/auth", require("./api/auth"));
+app.use("/api/booking", require("./api/booking"));
 
 const PORT = process.env.PORT || 5000;
 

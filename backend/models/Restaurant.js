@@ -56,8 +56,14 @@ const RestaurantSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "users",
       },
+      name: {
+        type: String,
+      },
+      number: {
+        type: Number,
+      },
       timeslot: {
-        type: Date,
+        type: String,
       },
       count: {
         type: Number,
