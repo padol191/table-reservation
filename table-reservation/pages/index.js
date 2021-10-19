@@ -5,10 +5,13 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import RestSignup from "../components/RestSignup";
 import RestList from "../components/RestList";
+import CustMain from "../components/CustMain";
+
 export default function Home() {
   return (
     <div className={styles.PageLayout}>
-      <h1>HELLO</h1>
+      <Navbar />
+      <Footer />
     </div>
   );
 }
