@@ -1,4 +1,5 @@
 import style from "../styles/AdminMain.module.css";
+import {AiOutlineCheck} from 'react-icons/ai'
 export const getStaticProps = async () => {
   const res = await fetch("http://localhost:5000/api/restaurant/all");
   const data = await res.json();
@@ -26,6 +27,7 @@ const AdminMain = (props) => {
           <p>Slot: 6:00 PM - 8:00 PM</p>
           <p>Number Of Diners: 6</p>
           <p>Contact: +91 9999999999</p>
+          <button className={style.donebutton}><AiOutlineCheck /></button>
         </div>
         <div className={style.assignedElement}>
           <p>Name: John Doe #2</p>
