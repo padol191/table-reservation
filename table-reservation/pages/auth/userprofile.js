@@ -13,7 +13,11 @@ export default function Profile() {
   const [auth, setAuth] = useState(false);
   const [dtoken, setToken] = useState("");
   //   const token = window.localStorage.setItem("token", res.data.token);
-
+  const Completed = async (event, id) => {
+    setToken(window.localStorage.getItem("token"));
+    const url = `http://localhost:5000/api/booking/user/completed/${id}`;
+    console.log(url);
+  };
   useEffect(() => {
     (async () => {
       try {
@@ -52,43 +56,54 @@ export default function Profile() {
               <Link href="../restaurants">Book A Table</Link>
             </button>
             <h2>Active Bookings</h2>
-            {content.reservations.map((value) => (
-              <div className={style.queueDiv} key={value._id}>
-                <div className={style.activeBooking}>
-                  <p>{value.name}</p>
-                  <p>Timeslot: {value.timeslot}</p>
-                  <p>Number Of Diners: {value.count}</p>
-                  <button
-                    className={style2.backbutton}
-                    action=""
-                    onClick={() => {
-                      DeleteRes(value._id);
-                    }}
-                  >
-                    <IoMdArrowRoundBack />
-                  </button>
-                </div>
-              </div>
-            ))}
-
-            {/* <h2>Previous Bookings</h2>
-                <div className={style.queueDiv}>
+            {content.reservations.map((value) => {
+              if (value.completed === false) {
+                return (
+                  <div className={style.queueDiv} key={value._id}>
                     <div className={style.activeBooking}>
-                        <p>Name: Restaurant Name</p>
-                        <p>Slot: 6:00 PM - 8:00 PM</p>
-                        <p>Number Of Diners: 3</p>
+                      <p>{value.name}</p>
+                      <p>Timeslot: {value.timeslot}</p>
+                      <p>Number Of Diners: {value._id}</p>
+                      <button
+                        className={style2.backbutton}
+                        action=""
+                        onClick={() => {
+                          console.log(value._id);
+                          Completed(value._id);
+                        }}
+                      >
+                        <IoMdArrowRoundBack />
+                      </button>
                     </div>
-                    <div className={style.activeBooking}>
-                        <p>Name: Restaurant Name</p>
-                        <p>Slot: 6:00 PM - 8:00 PM</p>
-                        <p>Number Of Diners: 3</p>
+                  </div>
+                );
+              }
+            })}
+            <h2>Previous Bookings</h2>
+            <div className={style.queueDiv}>
+              {content.reservations.map((value) => {
+                if (value.completed === true) {
+                  return (
+                    <div className={style.queueDiv} key={value._id}>
+                      <div className={style.activeBooking}>
+                        <p>{value.name}</p>
+                        <p>Timeslot: {value.timeslot}</p>
+                        <p>Number Of Diners: {value.count}</p>
+                        <button
+                          className={style2.backbutton}
+                          action=""
+                          onClick={() => {
+                            DeleteRes(value._id);
+                          }}
+                        >
+                          <IoMdArrowRoundBack />
+                        </button>
+                      </div>
                     </div>
-                    <div className={style.activeBooking}>
-                        <p>Name: Restaurant Name</p>
-                        <p>Slot: 6:00 PM - 8:00 PM</p>
-                        <p>Number Of Diners: 3</p>
-                    </div>
-                </div> */}
+                  );
+                }
+              })}
+            </div>
           </div>
         </div>
       )}

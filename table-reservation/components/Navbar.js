@@ -10,7 +10,9 @@ const Navbar = () => {
           </div>
 
           <a className={style.NavbarComponent}>Home</a>
-          <a className={style.NavbarComponent}>Sign Up</a>
+          <Link href="">
+            <a className={style.NavbarComponent}>Sign Up</a>
+          </Link>
           <a className={style.NavbarComponent}>Log In</a>
         </div>
       </nav>

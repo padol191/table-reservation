@@ -22,15 +22,19 @@ const CustMain = (props) => {
           <Link href="../restaurants">Book A Table</Link>
         </button>
         <h2>Active Bookings</h2>
-        {props.data.reservations.map((value) => (
-          <div className={style.queueDiv}>
-            <div className={style.activeBooking}>
-              <p>{value.name}</p>
-              <p>Timeslot: {value.timeslot}</p>
-              <p>Number Of Diners: {value.count}</p>
-            </div>
-          </div>
-        ))}
+        {props.data.reservations.map((value) => {
+          if (value.completed === true) {
+            return (
+              <div className={style.queueDiv}>
+                <div className={style.activeBooking}>
+                  <p>{value.completed}</p>
+                  <p>Timeslot: {value.timeslot}</p>
+                  <p>Number Of Diners: {value.count}</p>
+                </div>
+              </div>
+            );
+          }
+        })}
 
         {/* <h2>Previous Bookings</h2>
                 <div className={style.queueDiv}>

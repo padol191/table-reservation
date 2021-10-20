@@ -1,9 +1,7 @@
 import style from "../styles/AdminMain.module.css";
-<<<<<<< HEAD
 import Link from "next/link";
-=======
-import {AiOutlineCheck} from 'react-icons/ai'
->>>>>>> 3949743dbd9f4eea1e997855413571cdc93defdc
+import style2 from "../styles/Reservation.module.css";
+import { IoMdArrowRoundBack } from "react-icons/io";
 export const getStaticProps = async () => {
   const res = await fetch("http://localhost:5000/api/restaurant/all");
   const data = await res.json();
@@ -28,14 +26,28 @@ const AdminMain = (props) => {
       <p>Available Tables: {props.data.tables.unreserved}</p>
       <div className={style.queueDiv}>
         <h3>Assigned</h3>
-        {props.data.reservations.map((value) => (
-          <div className={style.assignedElement}>
-            <p>Name: {value.name}</p>
-            <p>Slot: {value.timeslot}</p>
-            <p>Number Of Diners: {value.count}</p>
-            <p>Contact: +91 {value.number}</p>
-          </div>
-        ))}
+        {props.data.reservations.map((value) => {
+          if (value.completed === false) {
+            return (
+              <div className={style.queueDiv} key={value._id}>
+                <div className={style.assignedElement}>
+                  <p>{value.name}</p>
+                  <p>Timeslot: {value.timeslot}</p>
+                  <p>Number Of Diners: {value.count}</p>
+                  <button
+                    className={style2.backbutton}
+                    action=""
+                    onClick={() => {
+                      DeleteRes(value._id);
+                    }}
+                  >
+                    <IoMdArrowRoundBack />
+                  </button>
+                </div>
+              </div>
+            );
+          }
+        })}
       </div>
       <div className={style.queueDiv}>
         <h3>Queue</h3>

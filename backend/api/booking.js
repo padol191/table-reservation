@@ -84,6 +84,28 @@ router.get("/all", authrest, async (req, res) => {
   }
 });
 
+router.put("/completed/:id", authrest, async (req, res) => {
+  const restaurant = await Restaurant.findById(req.restaurant.id).select(
+    "-password"
+  );
+  const reserve = restaurant.reservations.find(
+    (reservation) => reservation.id === req.params.id
+  );
+  restaurant.tables.unreserved++;
+  reserve.completed = true;
+  await restaurant.save();
+  res.send(reserve);
+});
+router.put("user/completed/:id", auth, async (req, res) => {
+  const restaurant = await User.findById(req.user.id).select("-password");
+  const reserve = restaurant.reservations.find(
+    (reservation) => reservation.id === req.params.id
+  );
+
+  reserve.completed = true;
+  await restaurant.save();
+  res.send(reserve);
+});
 router.post(
   "/:id",
   auth,
