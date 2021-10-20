@@ -1,0 +1,44 @@
+.homepage{
+    width: 70%;
+    margin: auto;
+}
+
+.homeflex{
+    display: flex;
+    align-items: flex-start;
+}
+.namemotto{
+    background-color: #f2f2f27e;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    min-height: 38vmin;
+    margin: auto;
+    margin-top: 40px;
+    border-radius: 3px;
+    box-shadow: inset 0px 1px 5px #604f68a8;
+}
+
+.namemotto hr{
+    margin-top: 10px;
+    width: 60%;
+    margin-bottom: 10px;
+}
+
+.namemotto h3{
+    color: #C8A5D9;
+    font-weight: 500;
+}
+
+.aboutus h2{
+    margin-bottom: 20px;
+    font-size: 200%;
+}
+
+.aboutus{
+    width: 70%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
