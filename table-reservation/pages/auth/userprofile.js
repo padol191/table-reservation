@@ -11,12 +11,25 @@ import CustMain from "../../components/CustMain";
 export default function Profile() {
   const [content, setMessage] = useState("");
   const [auth, setAuth] = useState(false);
+  const [url, setUrl] = useState("");
   const [dtoken, setToken] = useState("");
   //   const token = window.localStorage.setItem("token", res.data.token);
   const Completed = async (event, id) => {
-    setToken(window.localStorage.getItem("token"));
-    const url = `http://localhost:5000/api/booking/user/completed/${id}`;
-    console.log(url);
+    try {
+      setToken(window.localStorage.getItem("token"));
+      console.log(dtoken);
+      console.log(url);
+      const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "x-auth-token": dtoken,
+        },
+      });
+      const content = await response.json();
+      console.log(content);
+    } catch (error) {
+      console.log(error);
+    }
   };
   useEffect(() => {
     (async () => {
@@ -31,6 +44,7 @@ export default function Profile() {
 
         const content = await response.json();
         console.log(content);
+
         setMessage(content);
         setAuth(true);
       } catch (e) {
@@ -63,13 +77,18 @@ export default function Profile() {
                     <div className={style.activeBooking}>
                       <p>{value.name}</p>
                       <p>Timeslot: {value.timeslot}</p>
-                      <p>Number Of Diners: {value._id}</p>
+                      <p>Number Of Diners: {value.count}</p>
                       <button
                         className={style2.backbutton}
                         action=""
                         onClick={() => {
-                          console.log(value._id);
-                          Completed(value._id);
+                          setUrl(
+                            "http://localhost:5000/api/booking/user/completed/" +
+                              value._id
+                          );
+
+                          console.log(url);
+                          Completed();
                         }}
                       >
                         <IoMdArrowRoundBack />
@@ -89,15 +108,6 @@ export default function Profile() {
                         <p>{value.name}</p>
                         <p>Timeslot: {value.timeslot}</p>
                         <p>Number Of Diners: {value.count}</p>
-                        <button
-                          className={style2.backbutton}
-                          action=""
-                          onClick={() => {
-                            DeleteRes(value._id);
-                          }}
-                        >
-                          <IoMdArrowRoundBack />
-                        </button>
                       </div>
                     </div>
                   );

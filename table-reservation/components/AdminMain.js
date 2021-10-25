@@ -1,5 +1,7 @@
 import style from "../styles/AdminMain.module.css";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+
 import style2 from "../styles/Reservation.module.css";
 import { IoMdArrowRoundBack } from "react-icons/io";
 export const getStaticProps = async () => {
@@ -10,7 +12,28 @@ export const getStaticProps = async () => {
     props: { data },
   };
 };
+
 const AdminMain = (props) => {
+  const [url, setUrl] = useState("");
+  const [dtoken, setToken] = useState("");
+
+  const Completed = async (event, id) => {
+    try {
+      setToken(window.localStorage.getItem("token"));
+      console.log(dtoken);
+      console.log(url);
+      const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "x-auth-token": dtoken,
+        },
+      });
+      const content = await response.json();
+      console.log(content);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   console.log(props);
   return (
     <div className={style.main}>
@@ -38,7 +61,13 @@ const AdminMain = (props) => {
                     className={style2.backbutton}
                     action=""
                     onClick={() => {
-                      DeleteRes(value._id);
+                      setUrl(
+                        "http://localhost:5000/api/booking/completed/" +
+                          value._id
+                      );
+
+                      console.log(url);
+                      Completed();
                     }}
                   >
                     <IoMdArrowRoundBack />

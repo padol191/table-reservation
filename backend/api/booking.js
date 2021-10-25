@@ -96,7 +96,8 @@ router.put("/completed/:id", authrest, async (req, res) => {
   await restaurant.save();
   res.send(reserve);
 });
-router.put("user/completed/:id", auth, async (req, res) => {
+
+router.put("/user/completed/:id", auth, async (req, res) => {
   const restaurant = await User.findById(req.user.id).select("-password");
   const reserve = restaurant.reservations.find(
     (reservation) => reservation.id === req.params.id
