@@ -98,7 +98,10 @@ const Reservation = ({ data }) => {
       </button>
       <h3>Book a Table</h3>
       <p className={style.formDetails}>Vacanies: {data.tables.unreserved}</p>
-      <p className={style.formDetails}>Approx. Waiting Time: 35mins</p>
+      <p className={style.formDetails}>Queue: {data.tables.queue}</p>
+      <p className={style.formDetails}>
+        Approx. Waiting Time: {data.tables.wait}
+      </p>
       <form className={style.form} onSubmit={DataHandler} action="">
         <label className={style.formLabel}>Select The Number Of Diners</label>
         <input

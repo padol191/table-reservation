@@ -34,6 +34,23 @@ const AdminMain = (props) => {
       console.log(error);
     }
   };
+  const Status = async (event, id) => {
+    try {
+      setToken(window.localStorage.getItem("token"));
+      console.log(dtoken);
+      console.log(url);
+      const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "x-auth-token": dtoken,
+        },
+      });
+      const content = await response.json();
+      console.log(content);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   console.log(props);
   return (
     <div className={style.main}>
@@ -46,11 +63,13 @@ const AdminMain = (props) => {
       </div>
 
       <p>Total Tables: {props.data.tables.total}</p>
+      <p>Queue: {props.data.tables.queue}</p>
+      <p>Wait: {props.data.tables.wait}</p>
       <p>Available Tables: {props.data.tables.unreserved}</p>
       <div className={style.queueDiv}>
         <h3>Assigned</h3>
         {props.data.reservations.map((value) => {
-          if (value.completed === false) {
+          if (value.completed === false && value.status === false) {
             return (
               <div className={style.queueDiv} key={value._id}>
                 <div className={style.assignedElement}>
@@ -80,6 +99,33 @@ const AdminMain = (props) => {
       </div>
       <div className={style.queueDiv}>
         <h3>Queue</h3>
+        {props.data.reservations.map((value) => {
+          if (value.status === true) {
+            return (
+              <div className={style.queueDiv} key={value._id}>
+                <div className={style.assignedElement}>
+                  <p>{value.name}</p>
+                  <p>Timeslot: {value.timeslot}</p>
+                  <p>Number Of Diners: {value.count}</p>
+                  <button
+                    className={style2.backbutton}
+                    action=""
+                    onClick={() => {
+                      setUrl(
+                        "http://localhost:5000/api/booking/status/" + value._id
+                      );
+
+                      console.log(url);
+                      Status();
+                    }}
+                  >
+                    <IoMdArrowRoundBack />
+                  </button>
+                </div>
+              </div>
+            );
+          }
+        })}
       </div>
     </div>
   );

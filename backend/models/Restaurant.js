@@ -30,6 +30,9 @@ const RestaurantSchema = new Schema({
   city: {
     type: String,
   },
+  image: {
+    type: String,
+  },
   tables: {
     time: {
       type: Date,
@@ -37,7 +40,14 @@ const RestaurantSchema = new Schema({
     total: {
       type: Number,
     },
-
+    queue: {
+      type: Number,
+      default: 0,
+    },
+    wait: {
+      type: Number,
+      default: 0,
+    },
     reserved: {
       type: Number,
     },
@@ -69,6 +79,10 @@ const RestaurantSchema = new Schema({
         type: Number,
       },
       completed: {
+        type: Boolean,
+        default: false,
+      },
+      status: {
         type: Boolean,
         default: false,
       },

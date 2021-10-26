@@ -8,6 +8,9 @@ const config = require("config");
 const { check, validationResult } = require("express-validator");
 const User = require("../models/User");
 const authrest = require("../middleware/authrest");
+const accountSid = config.get("accountsid");
+const authToken = config.get("authtoken");
+const client = require("twilio")(accountSid, authToken);
 
 //Admin Panel Add button
 router.post(
@@ -35,8 +38,21 @@ router.post(
       };
 
       restaurant.reservations.unshift(newReservation);
-
-      restaurant.tables.unreserved--;
+      client.messages
+        .create({
+          body: `Reservation Done, name: ${req.body.name}, timeslot: ${req.body.timeslot}`,
+          from: "+13203473806",
+          to: "+919082268150",
+        })
+        .then((message) => console.log(message.sid))
+        .catch((err) => console.error("gg"));
+      if (restaurant.tables.unreserved > 0) {
+        restaurant.tables.unreserved--;
+      } else if (restaurant.tables.unreserved === 0) {
+        restaurant.tables.queue++;
+        restaurant.tables.wait = +7;
+        restaurant.reservations.status = true;
+      }
       await restaurant.save();
 
       res.json(restaurant.reservations);
@@ -91,8 +107,29 @@ router.put("/completed/:id", authrest, async (req, res) => {
   const reserve = restaurant.reservations.find(
     (reservation) => reservation.id === req.params.id
   );
-  restaurant.tables.unreserved++;
+  if (
+    restaurant.tables.unreserved < restaurant.tables.total &&
+    restaurant.tables.queue >= 0
+  ) {
+    restaurant.tables.unreserved++;
+  }
+  if (restaurant.tables.queue > 0) {
+    restaurant.tables.queue--;
+    restaurant.tables.wait -= 7;
+  }
   reserve.completed = true;
+  await restaurant.save();
+  res.send(reserve);
+});
+router.put("/status/:id", authrest, async (req, res) => {
+  const restaurant = await Restaurant.findById(req.restaurant.id).select(
+    "-password"
+  );
+  const reserve = restaurant.reservations.find(
+    (reservation) => reservation.id === req.params.id
+  );
+  restaurant.tables.unreserved--;
+  reserve.status = false;
   await restaurant.save();
   res.send(reserve);
 });
@@ -136,9 +173,23 @@ router.post(
       restaurant.reservations.push(restReservation);
       user.reservations.push(userReservation);
 
-      restaurant.tables.unreserved--;
+      if (restaurant.tables.unreserved > 0) {
+        restaurant.tables.unreserved--;
+      } else {
+        restaurant.tables.queue++;
+        restaurant.tables.wait = +7;
+        restaurant.reservations.status = true;
+      }
       await restaurant.save();
       await user.save();
+      client.messages
+        .create({
+          body: `Reservation Done, name: ${user.name}, timeslot: ${req.body.timeslot}`,
+          from: "+13203473806",
+          to: "+919082268150",
+        })
+        .then((message) => console.log(message.sid))
+        .catch((err) => console.error("gg"));
 
       res.json(restaurant.reservations);
     } catch (err) {
